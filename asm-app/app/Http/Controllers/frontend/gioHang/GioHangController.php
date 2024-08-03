@@ -12,6 +12,6 @@ class GioHangController extends Controller
     }
 
     public function show(){
-        return view('frontend.gioHang.gioHang');
+        return view('frontend.gioHang.viewcart');
     }
 }

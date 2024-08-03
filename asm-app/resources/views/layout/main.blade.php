@@ -75,12 +75,12 @@
                                         
                                     
                                     <li><a href="{{route('san-pham.san-pham-danh-muc')}}">Sản Phẩm</a>
-                                        @foreach ($danh_mucs as $item)
+                                        
                                         <ul class="sub-menu-style">
-                                            <li><a href="{{route('san-pham.san-pham-danh-muc')}}">{{$item->ten_danh_muc}}</a></li>
+                                            <li><a href="{{route('san-pham.san-pham-danh-muc')}}">ÁO KHOÁC LOCAL BRAND</a></li>
                                             
                                         </ul>
-                                        @endforeach
+                                       
                                     </li>
                                    
                                     
@@ -106,8 +106,27 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="header-action-style">
-                                <a title="Login Register" href="{{route('tai-khoan.dang-nhap')}}"><i class="pe-7s-user"></i></a>
+                            <div class="header-action-style main-menu">
+                                <nav>
+                                    <ul>
+                                            <li><a title="Tài khoản" href="{{route('tai-khoan.dang-nhap')}}"><i class="pe-7s-user"></i></a>
+                                                <ul class="">
+                                                    @if (Auth::check())
+                                                    <li><a href="?act=thongtintk" style="font-size:13px;">Thông tin tài khoản</a></li>
+                                                    @if (Auth::user()->role==0)
+                                                        <li><a href="{{route('admin.index')}}" style="font-size:13px;">Quản trị viên</a></li>
+                                                    @endif
+                                                    <li><a href="?act=lichsumuahang" style="font-size:13px;">Đơn mua</a></li>
+                                                    <li><a href="{{route('tai-khoan.dang-xuat')}}" style="font-size:13px;">Đăng xuất</a></li>
+                                                    @else
+                                                    <li><a href="{{route('tai-khoan.dang-nhap')}}" style="font-size:13px;">Đăng nhập</a></li>
+                                                    <li><a href="{{route('tai-khoan.dang-ky')}}" style="font-size:13px;">Đăng ký</a></li>  
+                                                    @endif
+                                                </ul>
+                                            </li>
+                                        
+                                    </ul>
+                                </nav>
                             </div>
                             <div class="header-action-style header-action-cart">
                                 <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
@@ -145,11 +164,11 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget footer-widget-margin-1 footer-list mb-40">
-                                <h3 class="footer-title">Information</h3>
+                                <h3 class="footer-title">Thông Tin</h3>
                                 <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="about-us.html">Giới Thiệu</a></li>
+                                    <li><a href="#">Chi Tiết Giỏ Hàng</a></li>
+                                    <li><a href="#">Chính Sách</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
                                     <li><a href="#">Customer Service</a></li>
                                 </ul>
@@ -157,22 +176,21 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget footer-list mb-40">
-                                <h3 class="footer-title">My Accound</h3>
+                                <h3 class="footer-title">Tài Khoản</h3>
                                 <ul>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="#">Newsletter</a></li>
-                                    <li><a href="#">Order History</a></li>
+                                    
+                                    <li><a href="#">Lịch Sử Mua Hàng</a></li>
+                                    <li><a href="#">Đơn Mua</a></li>
+                                    <li><a href="#">Thông Tin Tài Khoản</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget footer-widget-margin-2 footer-address mb-40">
-                                <h3 class="footer-title">Get in touch</h3>
+                                <h3 class="footer-title">Liên Hệ</h3>
                                 <ul>
-                                    <li><span>Address: </span>Your address goes here </li>
-                                    <li><span>Telephone Enquiry:</span> 0917261473</li>
+                                    <li><span>Địa Chỉ: </span>Mỹ Đình - Hà Nội </li>
+                                    <li><span>Hotline:</span> 0917261473</li>
                                     <li><span>Email: </span>hoangbach2510@gmail.com</li>
                                 </ul>
                                 <div class="open-time">

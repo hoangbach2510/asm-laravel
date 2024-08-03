@@ -12,6 +12,7 @@ use App\Http\Controllers\frontend\gioHang\ChiTietThanhToan;
 use App\Http\Controllers\frontend\gioHang\GioHangController;
 use App\Http\Controllers\frontend\taiKhoan\DangKyController;
 use App\Http\Controllers\frontend\taiKhoan\DangNhapController;
+use App\Http\Controllers\frontend\taiKhoan\TaiKhoanController;
 use App\Http\Controllers\frontend\sanPham\ChiTietSanPhamController;
 use App\Http\Controllers\frontend\sanPham\SanPhamDanhMucController;
 
@@ -101,8 +102,20 @@ Route::prefix('admin')->group(function(){
 Route::get('/', [HomeController::class,'home'])->name('trang-chu.home');
 
 Route::prefix('tai-khoan')->group(function(){
-    Route::get('dang-nhap', [DangNhapController::class,'show'])->name('tai-khoan.dang-nhap');
-    Route::get('dang-ky', [DangKyController::class,'show'])->name('tai-khoan.dang-ky');
+    Route::get('dang-nhap', [TaiKhoanController::class,'showDangNhap'])->name('tai-khoan.dang-nhap');
+    Route::post('dang-nhap', [TaiKhoanController::class,'dangNhap'])->name('tai-khoan.dang-nhap');
+
+    Route::get('dang-ky', [TaiKhoanController::class,'showDangKy'])->name('tai-khoan.dang-ky');
+    Route::post('dang-ky', [TaiKhoanController::class,'dangKy'])->name('tai-khoan.dang-ky');
+  
+
+    // Route::get('quen-mat-khau', [TaiKhoanController::class,'showQuenMatKhau'])->name('tai-khoan.quen-mat-khau');
+    // Route::post('quen-mat-khau', [TaiKhoanController::class, 'quenMatKhau'])->name('tai-khoan.quen-mat-khau');
+
+    // Route::get('dat-lai-mat-khau/{token}', [TaiKhoanController::class, 'showDatLaiMatKhau'])->name('tai-khoan.dat-lai-mat-khau');
+    // Route::post('doi-mat-khau', [TaiKhoanController::class, 'datLaiMatKhau'])->name('tai-khoan.doi-mat-khau');
+
+    Route::get('dang-xuat', [TaiKhoanController::class,'dangXuat'])->name('tai-khoan.dang-xuat');
 });
 
 Route::prefix('gio-hang')->group(function(){
@@ -115,9 +128,7 @@ Route::prefix('san-pham')->group(function(){
     Route::get('chi-tiet-san-pham/{id}', [SanPhamDanhMucController::class,'chiTietSanPham'])->name('san-pham.chi-tiet-san-pham');
 });
 
-Route::prefix('tin-tuc')->group(function(){
-    Route::get('show', [TinTucController::class,'show'])->name('tin-tuc.show');
-});
+
 
 // Route::get('/', function(){
 //     return view('frontend.home');

@@ -12,6 +12,6 @@ class ChiTietThanhToan extends Controller
     }
 
     public function show(){
-        return view('frontend.gioHang.chiTietThanhToan');
+        return view('frontend.gioHang.checkout');
     }
 }

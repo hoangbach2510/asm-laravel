@@ -13,10 +13,9 @@
                     <div class="shop-topbar-right">
                         <div class="shop-sorting-area">
                             <select class="nice-select nice-select-style-1">
-                                <option>Default Sorting</option>
-                                <option>Sort by popularity</option>
-                                <option>Sort by average rating</option>
-                                <option>Sort by latest</option>
+                                @foreach ($danh_mucs as $item)
+                                <option value="{{ $item->id }}" @if($item->id == old('danh_muc_id')) selected @endif>{{ $item->ten_danh_muc }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="shop-view-mode nav">
@@ -45,7 +44,7 @@
                                                 </button>
                                             </div>
                                             <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                                <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
                                             </div>
                                         </div>
                                         <div class="product-content">

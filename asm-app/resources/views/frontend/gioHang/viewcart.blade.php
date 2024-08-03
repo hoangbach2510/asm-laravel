@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="cart-clear btn-hover">
-                                    <a class="btn theme-color" href="{{route('thanh-toan')}}">Proceed to checkout</a>
+                                    <a class="btn theme-color" href="">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

@@ -10,27 +10,27 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="product-details-small-img">
-                                        <img src="assets/images/product-details/pro-details-small-img-1.png" alt="Product Thumnail">
+                                        <img src="assets/images/product-details/pro-details-small-img-1.png" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="product-details-small-img">
-                                        <img src="assets/images/product-details/pro-details-small-img-2.png" alt="Product Thumnail">
+                                        <img src="assets/images/product-details/pro-details-small-img-2.png" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="product-details-small-img">
-                                        <img src="assets/images/product-details/pro-details-small-img-3.png" alt="Product Thumnail">
+                                        <img src="assets/images/product-details/pro-details-small-img-3.png" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="product-details-small-img">
-                                        <img src="assets/images/product-details/pro-details-small-img-4.png" alt="Product Thumnail">
+                                        <img src="assets/images/product-details/pro-details-small-img-4.png" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="product-details-small-img">
-                                        <img src="assets/images/product-details/pro-details-small-img-5.png" alt="Product Thumnail">
+                                        <img src="assets/images/product-details/pro-details-small-img-5.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="easyzoom-style">
-                                    <div class="easyzoom easyzoom--overlay">
+                                    <div class="">
                                             <img src= "{{Storage::url($san_pham->hinh_anh)}}" width="468" height="468" alt="product" >
                                     </div>
                                     <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/pro-details-large-img-1.png">
@@ -104,10 +104,10 @@
             </div>
             <div class="col-lg-6">
                 <div class="product-details-content" data-aos="fade-up" data-aos-delay="400">
-                    <h2>New Modern Chair</h2>
+                    <h2>{{$san_pham->ten_san_pham}}</h2>
                     <div class="product-details-price">
-                        <span class="old-price">$25.89 </span>
-                        <span class="new-price">$20.25</span>
+                        <span class="old-price">{{number_format($san_pham->gia_san_pham, 0, ',', '.')}}đ</span>
+                        <span class="new-price">{{number_format($san_pham->gia_khuyen_mai, 0, ',', '.')}}đ</span>
                     </div>
                     
                     
@@ -116,17 +116,17 @@
                             <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">
                         </div>
                         <div class="single-product-cart btn-hover">
-                            <a href="#">Add to cart</a>
+                            <a href="#">Thêm Vào Giỏ Hàng</a>
                         </div>
                 
                     </div>
                     <div class="product-details-meta">
                         <ul>
-                            <li><span class="title">SKU:</span> Ch-256xl</li>
-                            <li><span class="title">Category:</span>
+                            <li><span class="title">Mã Loại:</span> NM-{{$san_pham->id}}</li>
+                            <li><span class="title">Danh Mục:</span>
                                 <ul>
-                                    <li><a href="#">Office</a>,</li>
-                                    <li><a href="#">Home</a></li>
+                                    <li><a href="{{route('san-pham.san-pham-danh-muc',$san_pham->danh_muc_id)}}" class="product-category">{{$danh_muc->ten_danh_muc}}</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -137,6 +137,78 @@
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="description-review-area pb-85">
+                <div class="container">
+                    <div class="description-review-topbar nav" data-aos="fade-up" data-aos-delay="200">
+                        <a class="active" data-bs-toggle="tab" href="#des-details1"> Mô Tả </a>
+                        
+                        <a data-bs-toggle="tab" href="#des-details3" class=""> Đánh Giá</a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="des-details1" class="tab-pane active">
+                            <div class="product-description-content text-center">
+                                <p data-aos="fade-up" data-aos-delay="200">{{$san_pham->mo_ta}} </p>
+                                
+                            </div>
+                        </div>
+                        
+                        <div id="des-details3" class="tab-pane">
+                            <div class="review-wrapper">
+                                <h3>1 đánh giá cho {{$san_pham->ten_san_pham}}</h3>
+                               
+                            <div class="ratting-form-wrapper">
+                                <h3>Add a Review</h3>
+                                <p>Your email address will not be published. Required fields are marked <span>*</span></p>
+                                <div class="your-rating-wrap">
+                                    <span>Your rating</span>
+                                    <div class="your-rating">
+                                        <a href="#"><i class="ti-star"></i></a>
+                                        <a href="#"><i class="ti-star"></i></a>
+                                        <a href="#"><i class="ti-star"></i></a>
+                                        <a href="#"><i class="ti-star"></i></a>
+                                        <a href="#"><i class="ti-star"></i></a>
+                                    </div>
+                                </div>
+                                <div class="ratting-form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="rating-form-style mb-15">
+                                                    <label>Name <span>*</span></label>
+                                                    <input type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="rating-form-style mb-15">
+                                                    <label>Email <span>*</span></label>
+                                                    <input type="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="rating-form-style mb-15">
+                                                    <label>Your review <span>*</span></label>
+                                                    <textarea name="Your Review"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="save-email-option">
+                                                    <p><input type="checkbox"> <label>Save my name, email, and website in this browser for the next time I comment.</label></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-submit">
+                                                    <input type="submit" value="Submit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table -> unsignedInteger('thanh_toan')->default(0);
             $table->timestamps();
             //ket noi
-            $table -> foreign('tai_khoan_id')->references('id')->on('tai_khoans')->onDelete('cascade');
+            $table -> foreign('tai_khoan_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

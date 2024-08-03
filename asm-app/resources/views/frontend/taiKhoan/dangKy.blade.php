@@ -7,7 +7,7 @@
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active" data-bs-toggle="tab" href="#lg1">
-                            <h4> Đăng Nhập </h4>
+                            <h4> Đăng Ký </h4>
                         </a>
                     </div>
                     @if (session('success'))
@@ -24,26 +24,30 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="{{route('tai-khoan.dang-nhap')}}" method="post">
+                                    <form action="{{route('tai-khoan.dang-ky')}}" method="post">
                                         @csrf
+                                        <input type="text" name="ho_va_ten" placeholder="Họ Và Tên" value="{{ old('ho_va_ten') }}">
+                                        @error('ho_va_ten')
+                                        <p class="Err text-danger">{{ $message }}</p>
+                                        @enderror
                                         <input name="email" placeholder="Email" type="email" value="{{ old('email') }}">
                                         @error('email')
                                         <p class="Err text-danger">{{ $message }}</p>
                                         @enderror
+
                                         <input type="password" name="password" placeholder="Mật Khẩu">
                                         @error('password')
                                         <p class="Err text-danger">{{ $message }}</p>
                                         @enderror
-                                        <div class="form-footer">
-                                            <a href="{{ route('tai-khoan.dang-ky') }}"
-                                                class="forget-password text-dark form-footer-left">Bạn chưa có tài khoản? Đăng ký
-                                                ngay</a>
-                                        </div>
-                                        <div class="login-toggle-btn">
+                                        <input type="password" name="password" placeholder="Nhập Lại Mật Khẩu">
+                                        @error('confirm_password')
+                                        <p class="Err text-danger">{{ $message }}</p>
+                                        @enderror
+                                        <div class="login-toggle-btn">   
                                             <a href="#">Quên Mật Khẩu?</a>
                                         </div>
                                         <div class="button-box btn-hover">
-                                            <button type="submit">Đăng Nhập</button>
+                                            <button type="submit">Đăng Ký</button>
                                         </div>
                                     </form>
                                 </div>
@@ -51,6 +55,27 @@
                         </div>
                        
                     </div>
+                    {{-- <div class="login-register-tab-list nav">
+                        <a data-bs-toggle="tab" href="#lg2">
+                            <h4> register </h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg2" class="tab-pane">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <form action="#" method="post">
+                                        <input type="text" name="user-name" placeholder="Username">
+                                        <input type="password" name="user-password" placeholder="Password">
+                                        <input name="user-email" placeholder="Email" type="email">
+                                        <div class="button-box btn-hover">
+                                            <button type="submit">Register</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

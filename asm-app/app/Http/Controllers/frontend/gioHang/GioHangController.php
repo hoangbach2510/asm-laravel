@@ -200,8 +200,7 @@ class GioHangController extends Controller
                     'ngay_dat_hang' => now(),
                     'dia_chi_nhan' => $request->dia_chi_nhan,
                     'so_dt_nhan' => $request->so_dt_nhan,
-                    'tong_thanh_toan' => $request->tong_thanh_toan,
-                    'phuong_thuc_tt' => 0,
+                    
                 ];
                 $donHang = DonHang::create($dataDonHang);
                 foreach ($gio_hang as $item) {
@@ -243,8 +242,8 @@ class GioHangController extends Controller
                     'ngay_dat_hang' => now(),
                     'dia_chi_nhan' => $request->dia_chi,
                     'so_dt_nhan' => $request->so_dien_thoai,
-                    'tong_thanh_toan' => $request->tong_thanh_toan,
-                    'phuong_thuc_tt' => 0,
+                    
+                    
                 ];
                 $donHang = DonHang::create($dataDonHang);
                 foreach ($gio_hang as $item) {

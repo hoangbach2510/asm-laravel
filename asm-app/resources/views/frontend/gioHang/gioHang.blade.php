@@ -31,9 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $tong_thanh_toan=0;
-                                    @endphp
+                                    
                                      @foreach ($gio_hangs as $item)
                                     <tr>
                                         
@@ -60,9 +58,7 @@
                                  
                                     </tr>
                                     
-                                        @php
-                                            $tong_thanh_toan+=($item->gia_khuyen_mai*$item->so_luong);
-                                        @endphp
+                                        
                                     @endforeach
                                 </tbody>
                             </table>

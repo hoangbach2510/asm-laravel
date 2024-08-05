@@ -3,21 +3,19 @@
  <!-- Begin Page Content -->
  <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách đơn hàng đã giao</h1>
-    <form action="?act=dagiao" method="post">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <button type="button" class="btn btn-secondary btn-sm" onclick="chontatca()">Chọn tất cả</button>
-                <button type="button" class="btn btn-secondary btn-sm" onclick="bochontatca()">Bỏ chọn tất cả</button>
-                <button type="submit" name="xoacacmucchon" class="btn btn-secondary btn-sm">Xóa các mục đã chọn</button>
                 <div class="float-right">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="kyw" placeholder="Tìm kiếm...">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" name="search">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+                    <form action="#" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
@@ -30,42 +28,38 @@
                                 <th>Khách hàng</th>
                                 <th>Số lượng</th>
                                 <th>Giá trị đơn hàng</th>
-                                <th>Tình trạng đơn hàng</th>
                                 <th>Ngày đặt hàng</th>
                                 <th>Thanh toán</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center align-middle"><input type="checkbox" name="select[]" id="" value=""></td>
-                                <td class="col-1 align-middle">DCM-'.$iddh.'</td>
-                                <td class="col-3 align-middle">
-                                    '.$hovatennhan.' <br>
-                                    '.$sodienthoainhan.' <br>
-                                    '.$email.' <br>
-                                    '.$diachinhan.'
-                                </td>
-                                <td class="text-center align-middle">'.$soluongct.'</td>
-                                <td  class="col-2 align-middle">12344567</td>
-                                <td  class="col-2 align-middle">'.$trangthai.'</td>
-                                <td class="col-2 align-middle">'.$ngaydathang.'</td>
-                                <td  class="col-2 align-middle">'.$thanhtoan.'</td>
-                            </tr>
+                            @foreach ($don_hangs as $item)
+                                @if ($item->trang_thai==4)
+                                    <tr>
+                                        <td class=" align-middle"><input type="checkbox" name="select[]"
+                                            value="{{ $item->id }}"></td>
+                                        <td class="col-1 align-middle">DH-{{$item->id}}</td>
+                                        <td class="col-3 align-middle">
+                                            {{$item->ho_ten_nhan}} <br>
+                                            {{$item->so_dt_nhan}} <br>
+                                            {{$item->email}} <br>
+                                            {{$item->dia_chi_nhan}}
+                                        </td>
+                                        <td class="text-center align-middle">{{$countDH[$item->id]}}</td>
+                                        <td  class="col-1 align-middle"></td>
+                                        <td class="col-2 align-middle">{{$item->ngay_dat_hang}}</td>
+                                        <td  class="col-2 align-middle text-success">Đã thanh toán</td>
+                                        <td class="col-2 align-middle text-center"><a href="{{route('don-hang.chi-tiet-don-hang',$item->id)}}" class="btn btn-warning btn-sm">Xem chi tiết</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
                         </tbody>
-                    </table> 
-                    <!-- <div class="phantrang">
-                        <ul>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">Next</a></li>
-                        </ul>
-                    </div> -->
+                    </table>
+                    {{$don_hangs->links()}}
                 </div>
             </div>
         </div>
-    </form>
 </div>
 <!-- /.container-fluid -->
 @endsection

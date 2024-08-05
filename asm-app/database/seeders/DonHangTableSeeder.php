@@ -35,7 +35,7 @@ class DonHangTableSeeder extends Seeder
                     'dia_chi_nhan' => $faker->address,
                     'so_dt_nhan' => $faker->numerify('##########'),
                     'trang_thai' => $faker->numberBetween(0, 3),
-                    'phuong_thuctt' => $faker->numberBetween(0, 1),
+                    
                     'thanh_toan' => $faker->numberBetween(0, 1),
                 ]);
             }

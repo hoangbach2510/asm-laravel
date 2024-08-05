@@ -93,6 +93,13 @@ Route::prefix('admin')->middleware('admin')->group(function(){
         Route::get('danh-sach-da-huy', [DonHangAdminController::class,'showDSDaHuy'])->name('don-hang.danh-sach-da-huy');
         Route::get('danh-sach-don-hang', [DonHangAdminController::class,'showDSDonHang'])->name('don-hang.danh-sach-don-hang');
         Route::get('danh-sach-kiem-duyet', [DonHangAdminController::class,'showDSKiemDuyet'])->name('don-hang.danh-sach-kiem-duyet');
+        Route::get('chi-tiet-don-hang/{id}', [DonHangAdminController::class,'showChiTietDonHang'])->name('don-hang.chi-tiet-don-hang');
+        Route::post('duyet-nhieu-don-hang', [DonHangAdminController::class,'duyetNhieuDonHang'])->name('don-hang.duyet-nhieu-don-hang');
+        Route::get('duyet-don-hang/{id}', [DonHangAdminController::class,'duyetDonHang'])->name('don-hang.duyet-don-hang');
+        Route::get('huy-don-hang/{id}', [DonHangAdminController::class,'huyDonHang'])->name('don-hang.huy-don-hang');
+        Route::get('cap-nhat-don-hang/{id}', [DonHangAdminController::class,'showCapNhatDonHang'])->name('don-hang.cap-nhat-don-hang');
+        Route::put('cap-nhat-don-hang/{id}', [DonHangAdminController::class,'capNhatDonHang'])->name('don-hang.cap-nhat-don-hang');
+        Route::get('in-hoa-don/{id}', [DonHangAdminController::class,'inHoaDon'])->name('don-hang.in-hoa-don');
     });
 
 });

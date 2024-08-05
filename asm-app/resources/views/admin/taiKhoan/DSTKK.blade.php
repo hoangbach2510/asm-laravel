@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('containerAdmin')
+@section('admin.content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách tài khoản đã bị khóa</h1>
@@ -21,9 +21,8 @@
                     <table class="table table-bordered" width="100%" cellspacing="0">
                         <thead class="thead-light">
                             <tr>
-                                <th>MATK</th>
+                                <th class="col-1 text-center">STT</th>
                                 <th>Họ và Tên</th>
-                                <th>Tên đăng nhập</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
@@ -37,7 +36,6 @@
                                 <tr>
                                     <td class="align-middle text-center">{{$item->id}}</td>
                                     <td class="col-2 align-middle">{{$item->ho_va_ten}}</td>
-                                    <td class="col-1 align-middle">{{$item->ten_dang_nhap}}</td>
                                     <td  class="col-1 align-middle">{{$item->email}}</td>
                                     <td class="col-1 align-middle">{{$item->so_dien_thoai}}</td>
                                     <td class="col-2 align-middle">{{$item->dia_chi}}</td>

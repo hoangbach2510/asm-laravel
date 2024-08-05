@@ -88,8 +88,6 @@ class TaiKhoanAdminController extends Controller
     public function update(UpdateTaiKhoanRequest $request, int $id){
         $dataUpdate = [
             'ho_va_ten' => $request->ho_va_ten,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
             'so_dien_thoai' => $request->so_dien_thoai,
             'dia_chi' => $request->dia_chi,
             'role' => $request->role,

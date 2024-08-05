@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('containerAdmin')
+@section('admin.content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

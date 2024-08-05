@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
 </head>
 <body>
 <div class="main-wrapper main-wrapper-2">
@@ -112,15 +113,15 @@
                                             <li><a title="Tài khoản" href="{{route('tai-khoan.dang-nhap')}}"><i class="pe-7s-user"></i></a>
                                                 <ul class="">
                                                     @if (Auth::check())
-                                                    <li><a href="?act=thongtintk" style="font-size:13px;">Thông tin tài khoản</a></li>
+                                                    
                                                     @if (Auth::user()->role==0)
-                                                        <li><a href="{{route('admin.index')}}" style="font-size:13px;">Quản trị viên</a></li>
+                                                        <li><a href="{{route('admin.index')}}" style="font-size:14px;">Quản trị viên</a></li>
                                                     @endif
-                                                    <li><a href="?act=lichsumuahang" style="font-size:13px;">Đơn mua</a></li>
-                                                    <li><a href="{{route('tai-khoan.dang-xuat')}}" style="font-size:13px;">Đăng xuất</a></li>
+                                                    <li><a href="{{route('gio-hang.don-mua')}}" style="font-size:14px;">Đơn hàng của bạn</a></li>
+                                                    <li><a href="{{route('tai-khoan.dang-xuat')}}" style="font-size:14px;">Đăng xuất</a></li>
                                                     @else
-                                                    <li><a href="{{route('tai-khoan.dang-nhap')}}" style="font-size:13px;">Đăng nhập</a></li>
-                                                    <li><a href="{{route('tai-khoan.dang-ky')}}" style="font-size:13px;">Đăng ký</a></li>  
+                                                    <li><a href="{{route('tai-khoan.dang-nhap')}}" style="font-size:14px;">Đăng nhập</a></li>
+                                                    <li><a href="{{route('tai-khoan.dang-ky')}}" style="font-size:14px;">Đăng ký</a></li>  
                                                     @endif
                                                 </ul>
                                             </li>
@@ -129,9 +130,15 @@
                                 </nav>
                             </div>
                             <div class="header-action-style header-action-cart">
-                                <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
-                                    <span class="product-count bg-black">01</span>
+                                @if (Auth::check())
+                                <a class="" href="{{route('gio-hang.show')}}"><i class="pe-7s-shopbag"></i>
+                                    <span class="product-count bg-black">0</span>
                                 </a>
+                                @else
+                                <a href="{{route('tai-khoan.dang-nhap')}}" title="Cart" class="dropdown-toggle cart-toggle">
+                                    <i class="minicart-icon"></i>
+                                </a>
+                                @endif
                             </div>
                             <div class="header-action-style d-block d-lg-none">
                                 <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
@@ -142,7 +149,9 @@
             </div>
         </div>
     </header>
-    
+    <div class="message-container" id="thongbaothemgiohang">
+        <div id="cart-message">Thêm vào giỏ hàng thành công !</div>
+    </div>
     <div class="main-wrapper main-wrapper-2">
     @yield('content')
     </div>
@@ -156,9 +165,9 @@
                                 <div class="footer-logo">
                                     <a href="index.html"><img src="{{asset('assets/images/logo/demi.webp')}}" alt="logo"></a>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, cons adipi elit, sed do eiusmod tempor incididunt ut aliqua.</p>
+                                <p>Cái Gì Khó Để DEMI Lo.</p>
                                 <div class="payment-img">
-                                    <a href="#"><img src="assets/images/icon-img/payment.png" alt="logo"></a>
+                                    <a href="#"><img src="{{asset('assets/images/icon-img/payment.png')}}" alt="logo"></a>
                                 </div>
                             </div>
                         </div>
@@ -233,6 +242,7 @@
     <script src="{{asset('assets/js/plugins/easyzoom.js')}}"></script>
     <script src="{{asset('assets/js/plugins/slinky.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/ajax-mail.js')}}"></script>
+    <script src="{{asset('assets/js/master.js')}}"></script>
     <!-- Main JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
 </body>

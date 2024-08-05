@@ -6,9 +6,7 @@
             <div class="col-12">
                 <div class="shop-topbar-wrapper mb-40">
                     <div class="shop-topbar-left">
-                        <div class="showing-item">
-                            <span>Showing 1–12 of 60 results</span>
-                        </div>
+                        
                     </div>
                     <div class="shop-topbar-right">
                         <div class="shop-sorting-area">
@@ -44,8 +42,16 @@
                                                 </button>
                                             </div>
                                             <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
+                                                
+                                                    
+                                                @if ($item->so_luong>0)
+                                                <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
+                                                <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})"class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
+                                               
                                             </div>
+                                            @else
+                                            <button class="btn-icon btn-add-cart product-type-simple" disabled><span>Tạm thời hết hàng</span></button>
+                                            @endif
                                         </div>
                                         <div class="product-content">
                                             <h3><a href="{{route('san-pham.chi-tiet-san-pham', $item->id)}}">{{$item->ten_san_pham}}</a></h3>

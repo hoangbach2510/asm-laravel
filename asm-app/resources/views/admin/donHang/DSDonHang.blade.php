@@ -1,23 +1,21 @@
 @extends('admin.layout.main')
-@section('containerAdmin')
+@section('admin.content')
  <!-- Begin Page Content -->
  <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách đơn hàng</h1>
-    <form action="?act=listdh" method="post">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <button type="button" class="btn btn-secondary btn-sm" onclick="chontatca()">Chọn tất cả</button>
-                <button type="button" class="btn btn-secondary btn-sm" onclick="bochontatca()">Bỏ chọn tất cả</button>
-                <button type="submit" name="xoacacmucchon" class="btn btn-secondary btn-sm">Xóa các mục đã chọn</button>
                 <div class="float-right">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="kyw" placeholder="Tìm kiếm...">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" name="search">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+                    <form action="{{ route('don-hang.danh-sach-don-hang') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="kyw" placeholder="Tìm kiếm...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
@@ -25,9 +23,8 @@
                     <table class="table table-bordered" width="100%" cellspacing="0">
                         <thead class="thead-light">
                             <tr>
-                                <th></th>
                                 <th>Mã đơn hàng</th>
-                                <th>Khách hàng</th>
+                                <th>Khách Hàng</th>
                                 <th>Số lượng</th>
                                 <th>Giá trị đơn hàng</th>
                                 <th>Tình trạng đơn hàng</th>
@@ -37,25 +34,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center align-middle"><input type="checkbox" name="select[]" id="" value=""></td>
-                                <td class="col-1 align-middle">DCM-'.$iddh.'</td>
-                                <td class="col-3 align-middle">
-                                    '.$hovatennhan.' <br>
-                                    '.$sodienthoainhan.' <br>
-                                    '.$email.' <br>
-                                    '.$diachinhan.'
-                                </td>
-                                <td class="text-center align-middle">'.$soluongct.'</td>
-                                <td  class="col-1 align-middle">11111111₫</td>
-                                <td  class="col-2 align-middle">'.$trangthai.'</td>
-                                <td class="col-2 align-middle">'.$ngaydathang.'</td>
-                                <td  class="col-2 align-middle '.$class.'">'.$thanhtoan.'</td>
-                                <td class="col-2 align-middle"><a href=""><button type="button" class="btn btn-secondary btn-sm">Update</button></a> <br><br>
-                                    <a href=""><button type="button" class="btn btn-secondary btn-sm">Hủy</button></a></td>
-                            </tr>
+                            @foreach ($don_hangs as $item)
+                                @if ($item->trang_thai==1 || $item->trang_thai==2 || $item->trang_thai==3)
+                                    <tr>
+                                        <td class="col-1 align-middle">NM-{{$item->id}}</td>
+                                        <td class="col-3 align-middle">
+                                            {{$item->ho_va_ten}} <br>
+                                            {{$item->so_dt_nhan}} <br>
+                                            {{$item->email}} <br>
+                                            {{$item->dia_chi_nhan}}
+                                        </td>
+                                        <td class="text-center align-middle">{{$countDH[$item->id]}}</td>
+                                        <td  class="col-1 align-middle">{{number_format($item->tong_thanh_toan, 0, ',', '.')}}đ</td>
+                                        <td  class="col-2 align-middle">{{$item->trang_thai}}</td>
+                                        {{-- @if ()
+
+                                        @elseif
+
+                                        @else
+
+                                        @endif --}}
+                                        <td class="col-2 align-middle">{{$item->ngay_dat_hang}}</td>
+                                        @if ($item->thanh_toan==0)
+                                            <td  class="col-2 align-middle text-danger">Chưa thanh toán</td>
+                                        @else
+                                            <td  class="col-2 align-middle text-success">Đã thanh toán</td>
+                                        @endif
+                                        <td class="col-2 align-middle"><a href=""><button type="button" class="btn btn-secondary btn-sm">Update</button></a> <br><br>
+                                            <a href=""><button type="button" class="btn btn-secondary btn-sm">Hủy</button></a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
                         </tbody>
-                    </table> 
+                    </table>
                     <!-- <div class="phantrang">
                         <ul>
                             <li><a class="active" href="#">1</a></li>
@@ -67,9 +78,8 @@
                     </div> -->
                 </div>
             </div>
-        </form> 
     </div>
-    
+
 </div>
 <!-- /.container-fluid -->
 @endsection

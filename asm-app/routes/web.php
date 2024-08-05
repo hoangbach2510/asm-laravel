@@ -28,7 +28,7 @@ use App\Http\Controllers\frontend\sanPham\SanPhamDanhMucController;
 */
 
 //admin
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('admin')->group(function(){
     Route::get('index', [HomeAdmin::class,'homeAdmin'])->name('admin.index');
 
     Route::prefix('tai-khoan')->group(function(){
@@ -102,28 +102,37 @@ Route::prefix('admin')->group(function(){
 Route::get('/', [HomeController::class,'home'])->name('trang-chu.home');
 
 Route::prefix('tai-khoan')->group(function(){
-    Route::get('dang-nhap', [TaiKhoanController::class,'showDangNhap'])->name('tai-khoan.dang-nhap');
+
+    Route::get('dang-nhap', [TaiKhoanController::class,'showDangNhap'])->name('tai-khoan.dang-nhap')->middleware('checkUser');
     Route::post('dang-nhap', [TaiKhoanController::class,'dangNhap'])->name('tai-khoan.dang-nhap');
 
-    Route::get('dang-ky', [TaiKhoanController::class,'showDangKy'])->name('tai-khoan.dang-ky');
+    Route::get('dang-ky', [TaiKhoanController::class,'showDangKy'])->name('tai-khoan.dang-ky')->middleware('checkUser');
     Route::post('dang-ky', [TaiKhoanController::class,'dangKy'])->name('tai-khoan.dang-ky');
-  
-
-    // Route::get('quen-mat-khau', [TaiKhoanController::class,'showQuenMatKhau'])->name('tai-khoan.quen-mat-khau');
-    // Route::post('quen-mat-khau', [TaiKhoanController::class, 'quenMatKhau'])->name('tai-khoan.quen-mat-khau');
-
-    // Route::get('dat-lai-mat-khau/{token}', [TaiKhoanController::class, 'showDatLaiMatKhau'])->name('tai-khoan.dat-lai-mat-khau');
-    // Route::post('doi-mat-khau', [TaiKhoanController::class, 'datLaiMatKhau'])->name('tai-khoan.doi-mat-khau');
-
     Route::get('dang-xuat', [TaiKhoanController::class,'dangXuat'])->name('tai-khoan.dang-xuat');
+
+    Route::get('thong-tin-tai-khoan', [TaiKhoanController::class,'thongTinTaiKhoan'])->name('tai-khoan.thong-tin-tai-khoan')->middleware('auth');
+    Route::post('cap-nhat-tai-khoan', [TaiKhoanController::class,'capNhatTaiKhoan'])->name('tai-khoan.cap-nhat-tai-khoan');
 });
 
-Route::prefix('gio-hang')->group(function(){
-    Route::get('show', [GioHangController::class,'show'])->name('gio-hang.show');
-    Route::get('chi-tiet-thanh-toan', [ChiTietThanhToan::class,'show'])->name('gio-hang.chi-tiet-thanh-toan');
+
+
+Route::prefix('gio-hang')->middleware('auth')->group(function(){
+    Route::get('show', [GioHangController::class,'showGioHang'])->name('gio-hang.show');
+    Route::get('chi-tiet-thanh-toan', [GioHangController::class,'showChiTietThanhToan'])->name('gio-hang.chi-tiet-thanh-toan');
+    Route::post('tiep-tuc-dat-hang', [GioHangController::class,'tiepTucDatHang'])->name('gio-hang.tiep-tuc-dat-hang');
+    Route::post('xac-nhan-dat-hang', [GioHangController::class,'xacNhanDatHang'])->name('gio-hang.xac-nhan-dat-hang');
+    Route::get('xoa-san-pham/{id}', [GioHangController::class,'xoaSanPhamGioHang'])->name('gio-hang.xoa-san-pham');
+    Route::get('don-mua', [GioHangController::class,'donMua'])->name('gio-hang.don-mua');
+    Route::post('them-gio-hang', [GioHangController::class,'addGioHang'])->name('gio-hang.them-gio-hang');
+    Route::post('mua-lai', [GioHangController::class,'muaLaiSanPham'])->name('gio-hang.mua-lai');
+    Route::put('da-nhan-hang/{id}', [GioHangController::class,'daNhanHang'])->name('gio-hang.da-nhan-hang');
+    Route::put('cap-nhat-gio-hang/{id}', [GioHangController::class,'capNhatGioHang'])->name('gio-hang.cap-nhat-gio-hang');
+
 });
+
 
 Route::prefix('san-pham')->group(function(){
+    Route::get('danh-muc', [SanPhamDanhMucController::class,'show'])->name('san-pham.danh-muc');
     Route::get('san-pham-danh-muc', [SanPhamDanhMucController::class,'show'])->name('san-pham.san-pham-danh-muc');
     Route::get('chi-tiet-san-pham/{id}', [SanPhamDanhMucController::class,'chiTietSanPham'])->name('san-pham.chi-tiet-san-pham');
 });

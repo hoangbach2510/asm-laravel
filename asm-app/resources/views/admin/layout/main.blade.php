@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion adminbg" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.index')}}">
                 <div class="sidebar-brand-text mx-3">DEMI Store</div>
             </a>
 
@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="?act=trangchu">
+                <a class="nav-link" href="{{route('admin.index')}}">
                     <i class="fas fa-fw fa-house-damage"></i>
                     <span>Home</span>
             </li>
@@ -121,11 +121,6 @@
                 </div>
             </li>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="?act=listbl">
-                    <i class="fas fa-fw fa-comment"></i>
-                    <span>Quản lý bình luận</span></a>
-            </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <hr class="sidebar-divider">
 
@@ -158,7 +153,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->ho_va_ten}}</span>
                                 <i class="fas fa-fw fa-user"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -179,7 +174,7 @@
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-                    @yield('containerAdmin')
+                    @yield('admin.content')
                 </div>
                 <!-- Begin Page Content -->
                 

@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('containerAdmin')
+@section('admin.content')
 <div class="container-fluid">
 
     <!-- Page Heading -->

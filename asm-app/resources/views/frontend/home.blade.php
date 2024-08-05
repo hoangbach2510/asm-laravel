@@ -1,47 +1,9 @@
 @extends('layout.main')
 @section('content')
     <!-- mini cart start -->
-    <div class="sidebar-cart-active">
-        <div class="sidebar-cart-all">
-            <a class="cart-close" href="#"><i class="pe-7s-close"></i></a>
-            <div class="cart-content">
-                <h3>Shopping Cart</h3>
-                <ul>
-                    <li>
-                        <div class="cart-img">
-                            <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Stylish Swing Chair</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="cart-img">
-                            <a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Modern Chairs</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <h4>Subtotal: <span>$170.00</span></h4>
-                </div>
-                <div class="cart-btn btn-hover">
-                    <a class="theme-color" href="{{route('gio-hang.show')}}">view cart</a>
-                </div>
-                <div class="checkout-btn btn-hover">
-                    <a class="theme-color" href="{{route('gio-hang.chi-tiet-thanh-toan')}}">checkout</a>
-                </div>
-            </div>
+    <div class="">
+        <div class="">
+            <a href="{{route('gio-hang.show')}}"><i class="pe-7s-close"></i></a> 
         </div>
     </div>
     <div class="slider-area">
@@ -113,8 +75,8 @@
                         <img src="assets/images/icon-img/car.png" alt="">
                     </div>
                     <div class="service-content">
-                        <h3>Free Shipping</h3>
-                        <p>Free shipping on all order</p>
+                        <h3>Miễn Phí Ship</h3>
+                        <p>Với Tất Cả Sản Phẩm</p>
                     </div>
                 </div>
             </div>
@@ -124,8 +86,8 @@
                         <img src="assets/images/icon-img/time.png" alt="">
                     </div>
                     <div class="service-content">
-                        <h3>Support 24/7</h3>
-                        <p>Support 24 hours a day</p>
+                        <h3>Hỗ Trợ 24/7</h3>
+                        <p>Trả Lời Sớm Nhất</p>
                     </div>
                 </div>
             </div>
@@ -135,8 +97,8 @@
                         <img src="assets/images/icon-img/dollar.png" alt="">
                     </div>
                     <div class="service-content">
-                        <h3>Money Return</h3>
-                        <p>Back Guarantee Under </p>
+                        <h3>Hoàn Tiền</h3>
+                        <p>Trả Hàng - Hoàn Tiền </p>
                     </div>
                 </div>
             </div>
@@ -146,8 +108,8 @@
                         <img src="{{asset('assets/images/icon-img/discount.png')}}" alt="">
                     </div>
                     <div class="service-content">
-                        <h3>Order Discount</h3>
-                        <p>Onevery order over $150</p>
+                        <h3>Giảm Giá </h3>
+                        <p>Sốc Không Giảm</p>
                     </div>
                 </div>
             </div>
@@ -158,7 +120,7 @@
             <div class="section-border section-border-margin-1" data-aos="fade-up" data-aos-delay="200">
                 <div class="section-title-timer-wrap bg-white">
                     <div class="section-title-1">
-                        <h2>Deal Of The Day</h2>
+                        <h2>Sản Phẩm Mới Nhất</h2>
                     </div>
                     
                 </div>
@@ -185,7 +147,12 @@
                                     </button>
                                 </div>
                                 <div class="product-action-2-wrap">
-                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    @if ($item->so_luong>0)
+                                    <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
+                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    @else
+                                    <button class="btn-icon btn-add-cart product-type-simple" disabled><span>Tạm thời hết hàng</span></button>
+                                    @endif
                                 </div>
                             </div>
                             <div class="product-content">
@@ -216,13 +183,9 @@
         <div class="container">
             <div class="section-title-tab-wrap mb-75">
                 <div class="section-title-2" data-aos="fade-up" data-aos-delay="200">
-                    <h2>Hot Products</h2>
+                    <h2>Sản Phẩm Nổi Bật</h2>
                 </div>
-                <div class="tab-style-1 nav" data-aos="fade-up" data-aos-delay="400">
-                    <a class="active" href="#pro-1" data-bs-toggle="tab">New Arrivals </a>
-                    <a href="#pro-2" data-bs-toggle="tab" class=""> Best Sellers </a>
-                    <a href="#pro-3" data-bs-toggle="tab" class=""> Sale Items </a>
-                </div>
+               
             </div>
             <div class="tab-content jump">
                 <div id="pro-1" class="tab-pane active">
@@ -245,7 +208,12 @@
                                         </button>
                                     </div>
                                     <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                        @if ($item->so_luong>0)
+                                    <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
+                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    @else
+                                    <button class="btn-icon btn-add-cart product-type-simple" disabled><span>Tạm thời hết hàng</span></button>
+                                    @endif
                                     </div>
                                 </div>
                                 <div class="product-content">

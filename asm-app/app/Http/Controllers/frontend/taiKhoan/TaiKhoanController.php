@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\DangNhapRequest;
-use App\Mail\ResetPassword;
+
 
 class TaiKhoanController extends Controller
 {
@@ -33,24 +33,6 @@ class TaiKhoanController extends Controller
         return view('frontend.taiKhoan.dangKy');
     }
 
-    public function showQuenMatKhau()
-    {
-        return view('frontend.taiKhoan.quenMatKhau');
-    }
-
-    public function quenMatKhau(Request $request)
-    {
-        $request->validate(
-            [
-                'email' => 'required|email|exists:users,email',
-            ],
-            [
-                'email.required' => 'Vui lòng nhập địa chỉ email!',
-                'email.email' => 'Địa chỉ email không hợp lệ!',
-                'email.exists' => 'Địa chỉ email chưa được đăng ký!',
-            ]
-        );
-    }
     public function dangNhap(DangNhapRequest $request)
     {
 

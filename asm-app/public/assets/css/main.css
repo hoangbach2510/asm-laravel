@@ -1,0 +1,112 @@
+
+/*don mua*/
+.donmua nav ul {
+    display: flex;
+    margin-left: 20px;
+  }
+  .donmua nav ul{
+    margin-top: 10px;
+  }
+  .donmua nav ul li{
+    margin-right: 15px;
+  }
+  .donmua nav ul li:first-child{
+    margin-left: 15px;
+  }
+  .donmua nav ul li a{
+    display: block;
+    color: #000;
+    padding: 10px 30px 0px 30px;
+    position: relative;
+
+  }
+  .donmua nav ul li a:last-child{
+    padding-left: 45px;
+  }
+  .donmua nav ul li a::after{
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: -35px;
+    background-color: transparent;
+  }
+  .donmua nav ul li.active a::after, .donmua nav ul li:hover a::after{
+    background-color: #e97730;
+  }
+  .table tbody td{
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 19px;
+    color: #000;
+  }
+  .table td a{
+    text-decoration: none;
+  }
+  .tableDonMua tfoot tr td p{
+    font-size: 19px;
+    color: #8b8b8b;
+}
+.tableDonMua tfoot tr td p{
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.tableDonMua tfoot .trangThai td p{
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.tableDonMua tfoot tr td{
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+.btnDonMua{
+    float: right;
+    margin-top: 20px;
+
+}
+.btnDonMua .btnDaNhan{
+    color: #fff;
+    font-weight: 500;
+    background-color: #dc3545;
+}
+.btnDonMua .btnMuaLai{
+    color: #fff;
+    font-weight: 500;
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+.btnDonMua a{
+    background-color: #e7ebf0;
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+}
+.btnDonMua a:hover{
+    color: #000;
+    background-color: #cacccf;
+}
+
+/* popup */
+.message-container {
+    /* width: 400px;
+    height: 200px; */
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 20px;
+    z-index: 9999;
+    border-radius: 5px;
+  }
+  #cart-message {
+    padding: 70px 20px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(136, 255, 106,0.86);
+  }
+  #cart-message img{
+    height: 60px;
+  }

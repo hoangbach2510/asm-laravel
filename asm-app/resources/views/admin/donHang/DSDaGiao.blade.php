@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('containerAdmin')
+@section('admin.content')
  <!-- Begin Page Content -->
  <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách đơn hàng đã giao</h1>

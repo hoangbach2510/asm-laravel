@@ -116,7 +116,10 @@
                             <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">
                         </div>
                         <div class="single-product-cart btn-hover">
-                            <a href="#">Thêm Vào Giỏ Hàng</a>
+                            @if ($san_pham->so_luong>0)
+                            <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
+                            <button data-id="{{$san_pham->id}}" onclick="themGioHang({{$san_pham->id}},{{$san_pham->gia_khuyen_mai}})"class="btn btn-warning" title="Add To Cart"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
+                            @endif
                         </div>
                 
                     </div>

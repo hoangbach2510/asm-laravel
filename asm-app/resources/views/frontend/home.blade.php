@@ -149,7 +149,7 @@
                                 <div class="product-action-2-wrap">
                                     @if ($item->so_luong>0)
                                     <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
-                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Thêm Vào Giỏ Hàng"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
                                     @else
                                     <button class="btn-icon btn-add-cart product-type-simple" disabled><span>Tạm thời hết hàng</span></button>
                                     @endif
@@ -210,7 +210,7 @@
                                     <div class="product-action-2-wrap">
                                         @if ($item->so_luong>0)
                                     <input type="hidden"  name="_token" value="{{ csrf_token() }}" />
-                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    <button data-id="{{$item->id}}" onclick="themGioHang({{$item->id}},{{$item->gia_khuyen_mai}})" class="product-action-btn-2" title="Thêm Vào Giỏ Hàng"><i class="pe-7s-cart"></i> Thêm Vào Giỏ Hàng</button>
                                     @else
                                     <button class="btn-icon btn-add-cart product-type-simple" disabled><span>Tạm thời hết hàng</span></button>
                                     @endif

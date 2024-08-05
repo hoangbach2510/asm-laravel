@@ -57,7 +57,7 @@
                                             </div>
                                         </td>
                                         <td class="text-right thanhTien"><span class="subtotal-price">{{number_format($item->gia_khuyen_mai*$item->so_luong, 0, ',', '.')}}đ</span></td>
-                                        <td class="product-remove"><a href="#"><i class=" ti-trash "></i></a></td>
+                                 
                                     </tr>
                                     
                                         @php
@@ -75,9 +75,7 @@
                                     <a href="{{ route('san-pham.danh-muc') }}">Tiếp Tục Mua Sắm</a>
                                 </div>
                                 <div class="cart-clear-wrap">
-                                    <div class="cart-clear btn-hover">
-                                        <button>Sửa</button>
-                                    </div>
+                                    
                                     <div class="cart-clear btn-hover">
                                         <button type="submit" name="xoa_gio_hang" class="">Xóa giỏ hàng</button>
                                     </div>
